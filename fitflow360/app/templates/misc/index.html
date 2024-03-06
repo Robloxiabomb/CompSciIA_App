@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitFlow360</title>
+  <style>
+    .center {
+    display: block;
+    margin-left: auto; 
+    margin-right: auto;
+    width: 50%;
+    }
+    .moveusername {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    }
+    .center {
+      width: 100%;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    label {
+      font-size: 16px;
+    }
+    input {
+      font-size: 16px;
+      width: 70%;
+    }
+      button {
+      font-size: 16px;
+      padding: 10px 20px;
+      }
+  </style>
+</head>
+<body>
+<img class="center" src="static/Logo.png" alt="Title, Logo, Slogan">
+<form action="/submit" method="POST">
+<h1>Login</h1>
+<label for="Username">Please enter your username:</label>
+<div class="row">
+  <input id="Username" name="Username" type="text" minlength="3" maxlength="20">
+  <button type="submit">Submit</button>
+</div>
+</form>
+<button onclick="location.href = 'signup';">Sign Up</button>
+{% with messages = get_flashed_messages()%}
+  {% if messages %}
+    {% for msg in messages %}
+      <p>{{ msg }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</body>
+</html>

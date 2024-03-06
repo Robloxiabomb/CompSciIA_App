@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    .topbar {
+      padding: 1rem;
+      font-size: 2rem;
+      text-decoration:none;
+    }
+    .center {
+      text-align:center
+      
+    }
+    .foot {
+      bottom: 0px;
+      position: fixed;
+      width: 100%;
+    }
+    .overflow {
+      overflow:visible;
+    }
+    .letter-space {
+      letter-spacing: -1.5rem;
+      color:black;
+      font-weight:bolder
+    } 
+    .day-height {
+        height:300px
+    }
+    .elements-height {
+        height:100px
+    }
+  </style>
+  <title>
+    FitFlow360
+  </title>
+    <body>
+      {% include 'header.html' %}
+      <h1 class="center">
+        Search Meal
+      </h1>
+      <form action="/searchmealform" method="POST">
+        <div class="container">
+          <div class="row">
+            <div class="col-9">
+              <input style=height:2rem name="SearchData" id="SearchData" placeholder="Enter search">
+            </div>
+            <div class="col-3">
+              <button class="btn-success" style="height:2rem" type="submit">Search</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form action="/searchmealselect">
+        <div class="container center">
+          <div class="col-8 center">
+            {% if NameList|length != 0 %}
+              {% for i in range(NameList|length) %}
+                <div class="row center">
+                  <button class="center" value="{{IDList[i]}},,{{NameList[i]}}" name="SearchButton" id="SearchButton" type="submit">
+                    {{NameList[i]}}
+                  </button>
+                </div>
+              {%endfor%}
+            {% else %}
+                No meals found!
+            {%endif%}
+          </div>
+        </div>
+      </form>
+    </body>
+    {% include 'footer.html' %}
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+      crossorigin="anonymous"
+    ></script>
+  </html>
